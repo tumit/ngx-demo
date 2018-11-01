@@ -28,10 +28,7 @@ describe('UserService', () => {
 
   it('should find one', () => {
 
-    service.findOne(1)
-      .subscribe(u => {
-        console.log('u', u);
-      });
+    service.findOne(1).subscribe(u => expect(u).toBeTruthy());
 
     const http = httpMock.expectOne(`${environment.apiUrl}/users/1`);
     expect(http.request.method).toEqual('GET');

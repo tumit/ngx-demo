@@ -1,22 +1,24 @@
-import { NgPerfume, PerfumeModule, PerfumeAfterViewInit } from 'perfume.js/angular';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { BaseInterceptor } from '@core/base.interceptor';
+import { CorePerfumeModule } from '@core/core-perfume.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CorePerfumeModule } from './core/core-perfume.module';
-
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    CorePerfumeModule.forRoot(),
     BrowserModule,
+    HttpClientModule,
+    CorePerfumeModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

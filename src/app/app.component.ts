@@ -9,7 +9,9 @@ import { NgPerfume, PerfumeAfterViewInit } from 'perfume.js/angular';
 @PerfumeAfterViewInit('AppComponent')
 export class AppComponent implements AfterViewInit {
   title = 'ngx-demo';
+
   constructor(public perfume: NgPerfume) { }
+
   ngAfterViewInit() { }
   launchFalconNine() {
     this.perfume.start('rocketScience');

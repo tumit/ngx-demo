@@ -1,0 +1,2 @@
+<ng-container *ngIf="item?.photoUrl as photoUrl; else noImage"><img [src]="photoUrl"></ng-container>
+<ng-template #noImage><p>{{item?.name[0]}}</p></ng-template>
